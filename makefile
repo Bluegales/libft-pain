@@ -68,7 +68,7 @@ extra:
 	@printf "\033[1;33m$<:\n\033[0m"
 	-@$(debug) $<
 
-.PRECIOUS:	_bin/%.out
+.PRECIOUS:	_bin/%.out _bin/%.o
 _bin/%.out:	_bin/%.o _bin/libbtest.a | _bin
 	@$(CC) $(CFLAGSS) $< -L$(LIBFT) -L./_bin -lft -lbtest -o $@
 
@@ -84,7 +84,5 @@ _bin:
 
 clean:
 	@rm -rf _bin
-	@rm -f no_sources.list
-	@rm -f no_test.list
 
 .PHONY: %.test clean

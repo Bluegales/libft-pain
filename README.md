@@ -1,2 +1,31 @@
 # libft-pain
 libft tester, not the fanciest one but has some useful features
+
+Currently does not test strlcat, and the bonus functions!
+
+### Features
+
+- Multiple tests for every function, making sure they behave as expected.
+- Shows usefull errors: (errors with pointers usally are return values)
+```
+_bin/test_ft_isascii.out:
+		ERROR on byte 180: expected: <1> got: <0>
+	ERROR on <0>: 1 bytes different
+_bin/test_ft_memcpy.out:
+  ERROR on <0>: expected: <0x7ffc20fd3da0> got: <0x7ffc20fd3da1>
+```
+- Tests rigerously for correct handling of failed allocation and memory leaks
+- Checks for wrongly used "" / <>
+```
+wrongly used "" / <>:
+../libft/ft_split.c:#include <libft.h> //ft_strchr
+```
+- Finds non static functions
+```
+files with non static functions:
+		2 ft_split.o
+```
+
+### Usage
+
+Add the correct path at the top of the makefile and "make"
