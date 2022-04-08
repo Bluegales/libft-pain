@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfuchs <pfuchs@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pfuchs <pfuchs@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:21:51 by pfuchs            #+#    #+#             */
-/*   Updated: 2022/03/15 11:25:10 by pfuchs           ###   ########.fr       */
+/*   Updated: 2022/04/08 12:09:30 by pfuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,34 @@ const char	g_str3[] = "0123456";
 const char	g_str4[] = "abcdefghi";
 const char	g_str5[] = "014\0""99991111";
 
-size_t	strlcat(char *dst, const char *src, size_t siz)
-{
-	char		*d;
-	const char	*s;
-	size_t		n;
-	size_t		dlen;
+// size_t	my_strlcat(char *dst, const char *src, size_t siz)
+// {
+// 	char		*d;
+// 	const char	*s;
+// 	size_t		n;
+// 	size_t		dlen;
 
-	d = dst;
-	s = src;
-	n = siz;
-	while (n-- != 0 && *d != '\0')
-		d++;
-	dlen = d - dst;
-	n = siz - dlen;
-	if (n == 0)
-		return (dlen + strlen(s));
-	while (*s != '\0')
-	{
-		if (n != 1)
-		{
-			*d++ = *s;
-			n--;
-		}
-		s++;
-	}
-	*d = '\0';
-	return (dlen + (s - src));
-}
+// 	d = dst;
+// 	s = src;
+// 	n = siz;
+// 	while (n-- != 0 && *d != '\0')
+// 		d++;
+// 	dlen = d - dst;
+// 	n = siz - dlen;
+// 	if (n == 0)
+// 		return (dlen + strlen(s));
+// 	while (*s != '\0')
+// 	{
+// 		if (n != 1)
+// 		{
+// 			*d++ = *s;
+// 			n--;
+// 		}
+// 		s++;
+// 	}
+// 	*d = '\0';
+// 	return (dlen + (s - src));
+// }
 
 static int	test_no_termination(void)
 {

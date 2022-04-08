@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_strsub.c                                   :+:      :+:    :+:   */
+/*   test_ft_substr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfuchs <pfuchs@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: pfuchs <pfuchs@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 11:21:51 by pfuchs            #+#    #+#             */
-/*   Updated: 2022/03/15 11:29:18 by pfuchs           ###   ########.fr       */
+/*   Updated: 2022/04/08 12:17:31 by pfuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ const char	g_src0[1] = "";
 const char	g_src1[10] = "abcdefghi";
 const char	g_src2[30] = "abcdefghijklmnopqrstuvwxyz012";
 
-char	*exp_substr(char const *s, unsigned int start, size_t len)
+static char	*exp_substr(char const *s, unsigned int start, size_t len)
 {
 	return (strndup(s + start, len));
 }
 
-int	test_null(void)
+static int	test_null(void)
 {
 	int		error;
 	int		i;
@@ -44,7 +44,7 @@ int	test_null(void)
 	return (error);
 }
 
-int	test(const char *src, int start, int len)
+static int	test(const char *src, int start, int len)
 {
 	int		error;
 	char	*exp;
@@ -55,7 +55,7 @@ int	test(const char *src, int start, int len)
 	got = ft_substr(src, start, len);
 	error += btest_int(0, strlen(exp), strlen(got));
 	error += btest_memory(len, exp, got, strlen(exp));
-	free(exp);
+	//free(exp);
 	free(got);
 	return (error);
 }
@@ -65,6 +65,7 @@ int	main(void)
 	int	error;
 
 	error = 0;
+	error += test_null();
 	error += test(g_src0, 0, 0);
 	error += test(g_src1, 0, 5);
 	error += test(g_src1, 5, 0);

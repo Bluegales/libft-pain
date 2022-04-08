@@ -1,7 +1,7 @@
 # libft-pain
 libft tester, not the fanciest one but has some useful features
 
-Currently does not test strlcat, and the bonus functions!
+Currently does not test the bonus functions!
 
 ### Features
 
@@ -28,4 +28,4 @@ files with non static functions:
 
 ### Usage
 
-Add the correct path at the top of the makefile and "make"
+Add the correct path at the top of the makefile and "make -i"

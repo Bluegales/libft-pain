@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pfuchs <pfuchs@student.42heilbronn.de>     +#+  +:+       +#+         #
+#    By: pfuchs <pfuchs@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/05 05:19:11 by pfuchs            #+#    #+#              #
-#    Updated: 2022/03/16 01:45:58 by pfuchs           ###   ########.fr        #
+#    Updated: 2022/04/08 12:12:41 by pfuchs           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Libft location
-LIBFT	= ../libft/
+LIBFT	= ../42-libft/
 
 VPATH = $(dir $(wildcard ./*/)) $(LIBFT)
 # Compiler Variables
@@ -52,12 +52,12 @@ math:		$(MATH_TESTS)
 extra:
 	@echo 'wrongly used "" / <>:'
 	@echo "" | grep -r '<libft.h>' $(LIBFT) | cat
-	@echo "" | grep -r '"stdlib.h"' $(LIBFT) | cat
-	@echo "" | grep -r '"unistd.h"' $(LIBFT) | cat
-	@echo "" | grep -r '"string.h"' $(LIBFT) | cat
-	@echo "" | grep -r 'stdio' $(LIBFT) | cat
+	@echo "" | grep -r '\"stdlib.h\"' $(LIBFT) | cat
+	@echo "" | grep -r '\"unistd.h\"' $(LIBFT) | cat
+	@echo "" | grep -r '\"string.h\"' $(LIBFT) | cat
+	@echo "" | grep -r '\"stdio\"' $(LIBFT) | cat
 	@echo "files with non static functions:"
-	@nm -o $(LIBFT)/libft.a | grep " T " | cut -d ':' -f 2 | uniq -cd
+	@nm -o $(LIBFT)/libft.a | grep " T " | cut -d ':' -f 2 | uniq -c | grep -v '^ *1 '
 
 .PHONY: all ctype stdlib output string string_add
 
