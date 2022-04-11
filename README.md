@@ -25,7 +25,9 @@ wrongly used "" / <>:
 files with non static functions:
 		2 ft_split.o
 ```
+- Directly links against the library (requires working makefile)
+- Finds missing const in function declarations
 
 ### Usage
 
-Add the correct path at the top of the makefile and "make -i"
+Add the correct path at the top of pain.sh and run it
