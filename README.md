@@ -31,3 +31,28 @@ files with non static functions:
 ### Usage
 
 Add the correct path at the top of pain.sh and run it
+
+
+## Leaks on ft_split
+
+A lot of people have a hard time figuring out why/where the ft_split is leaking so here the solution:
+
+```
+Malloc array of pointers to strings
+
+If array == Null  // Allocation failed
+	return NULL;
+	
+while (splits left) 
+{
+	Malloc string
+	If (string == null)  // Allocation failed
+	{ 
+		free ALL previously allocated strings
+		free array
+		return NULL
+	}
+	Fill string
+}
+return array
+```
