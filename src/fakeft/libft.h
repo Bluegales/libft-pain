@@ -13,12 +13,18 @@
 #include <assert.h>
 #include <stddef.h>
 
+// struct t_list {
+//   void *content;
+//   struct t_list *next;
+// };
+
+extern "C" {
+
 typedef struct s_list {
   void *content;
   struct s_list *next;
 } t_list;
 
-extern "C" {
 int ft_isalnum(int c) __attribute__((weak));
 int ft_isalpha(int c) __attribute__((weak));
 int ft_isdigit(int c) __attribute__((weak));
@@ -60,7 +66,7 @@ void ft_putnbr_fd(int n, int fd) __attribute__((weak));
 void ft_putstr_fd(const char *s, int fd) __attribute__((weak));
 char *ft_itoa(int n) __attribute__((weak));
 void ft_bzero(void *mem, size_t n) __attribute__((weak));
-t_list *ft_lstnew(const void *content) __attribute__((weak));
+t_list *ft_lstnew(void *content) __attribute__((weak));
 void ft_lstadd_front(t_list **lst, t_list *new_node) __attribute__((weak));
 int ft_lstsize(t_list *lst) __attribute__((weak));
 t_list *ft_lstlast(t_list *lst) __attribute__((weak));

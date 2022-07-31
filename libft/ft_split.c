@@ -112,7 +112,7 @@ static char	**ft_strsplitstr(const char *str, const char *delims)
 		it = splits;
 		while (*it)
 		{
-			//free(*it);
+			free(*it);
 			it++;
 		}
 		free(splits);

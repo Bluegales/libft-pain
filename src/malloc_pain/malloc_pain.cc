@@ -18,6 +18,7 @@ void *malloc_pain(size_t size) {
   char *data = reinterpret_cast<char *>(malloc(size));
   if (data == NULL)
     return NULL;
+  malloc_size -= size;
   for (int i = 0; i < size; i++) {
     data[i] = i + 1;
   }

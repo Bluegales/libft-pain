@@ -50,7 +50,7 @@ void ft_putnbr_fd(int n, int fd) { abort(); }
 void ft_putstr_fd(const char *s, int fd) { abort(); }
 char *ft_itoa(int n) { abort(); }
 void ft_bzero(void *mem, size_t n) { abort(); }
-t_list *ft_lstnew(const void *content) { abort(); }
+t_list *ft_lstnew(void *content) { abort(); }
 void ft_lstadd_front(t_list **lst, t_list *new_node) { abort(); }
 int ft_lstsize(t_list *lst) { abort(); }
 t_list *ft_lstlast(t_list *lst) { abort(); }

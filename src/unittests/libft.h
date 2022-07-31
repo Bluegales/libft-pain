@@ -3,12 +3,12 @@
 
 #include <stddef.h>
 
-extern "C" {
-
 typedef struct s_list {
   void *content;
   struct s_list *next;
 } t_list;
+
+extern "C" {
 
 int ft_isalnum(int c);
 int ft_isalpha(int c);
