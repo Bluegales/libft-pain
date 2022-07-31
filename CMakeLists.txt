@@ -1,10 +1,16 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.18)
 project(libft_pain)
 
 macro (install)
 endmacro ()
 
+enable_testing()
 set(CMAKE_CXX_STANDARD 17)
+include_directories(.)
+
+# =============
+# GTEST
+# =============
 
 include(FetchContent)
 FetchContent_Declare(
@@ -14,8 +20,11 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(googletest)
+include(GoogleTest)
 
-## search for libft
+# =============
+# LIBFT
+# =============
 find_path(
     LIBFT_FOLDER
     NAMES libft
@@ -32,37 +41,26 @@ file(GLOB ft_SRC
 add_library(
     ft STATIC
     ${ft_SRC}
+    src/malloc_pain/malloc_pain.cc
 )
-# if (CMAKE_C_COMPILER_ID STREQUAL "AppleClang")
-#   set(CMAKE_LINK_LIBRARY_USING_weak_library
-#       "PATH{-weak_library <LIBRARY>}NAME{LINKER:-weak-l<LIB_ITEM>}"
-#   )
-#   set(CMAKE_LINK_LIBRARY_USING_weak_library_SUPPORTED TRUE)
-# endif()
-add_library(
-    fakeft SHARED
-    fakeft/libft.cc
-    fakeft/libft.h
-)
+target_compile_definitions(ft PRIVATE malloc=malloc_pain free=free_pain)
 
-enable_testing()
-
-add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -fno-common -O1)
-link_libraries(-fsanitize=address,undefined)
-
-include_directories(.)
-
-add_subdirectory(tests)
+# =============
+# MAKEFILE
+# =============
 
 # Test the makefile potentially
-find_file(
-    LIBFT_MAKEFILE
-    NAMES makefile Makefile
-    HINTS LIBFT_FOLDER
-)
-if(NOT LIBFT_MAKEFILE)
-    message(WARNING "Can not find a makefile will build directly from source")
-endif()
+# find_file(
+#     LIBFT_MAKEFILE
+#     NAMES makefile Makefile
+#     HINTS LIBFT_FOLDER
+# )
+# if(NOT LIBFT_MAKEFILE)
+#     message(WARNING "Can not find a makefile will build directly from source")
+# endif()
 
+# =============
+# TESTS
+# =============
 
-
+add_subdirectory(src)

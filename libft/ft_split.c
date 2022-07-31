@@ -96,7 +96,7 @@ static int	fill_splits(const char *str, const char *delims, char **splits)
 
 // Returns a freeable NULL terminated array of freeable strings obtained by
 // spliting "str" with "delims".
-char	**ft_strsplit(const char *str, const char *delims)
+static char	**ft_strsplitstr(const char *str, const char *delims)
 {
 	char	**splits;
 	char	**it;
@@ -112,11 +112,20 @@ char	**ft_strsplit(const char *str, const char *delims)
 		it = splits;
 		while (*it)
 		{
-			free(*it);
+			//free(*it);
 			it++;
 		}
 		free(splits);
 		splits = NULL;
 	}
 	return (splits);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	delim[2];
+
+	delim[0] = c;
+	delim[1] = '\0';
+	return (ft_strsplitstr(s, delim));
 }

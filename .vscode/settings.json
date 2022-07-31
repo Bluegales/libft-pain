@@ -71,6 +71,21 @@
         "unordered_set": "cpp",
         "utility": "cpp",
         "variant": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ranges": "cpp",
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "clocale": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "stop_token": "cpp",
+        "strlcat.c": "cpp",
+        "strlcat_real.c": "cpp",
+        "filesystem": "cpp",
+        "codecvt": "cpp",
+        "math.h": "c"
     }
 }

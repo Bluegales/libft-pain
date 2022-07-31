@@ -112,7 +112,7 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 // Returns a freeable NULL terminated array of freeable strings obtained by
 // spliting "str" with 'c'.
-char		**ft_strsplit(char const *s, const char *set);
+char		**ft_split(char const *s, char c);
 
 // returns a freeable copy of "s" trimming chars in set from front and back
 char		*ft_strtrim(const char *str, const char *set);
