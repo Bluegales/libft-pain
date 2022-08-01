@@ -6,81 +6,78 @@
 #include "gtest/gtest.h"
 #include "src/unittests/libft.h"
 
-TEST(atoi, Empty) {
-    vs_real("");
-}
+static void compare(const char *str) { EXPECT_EQ(atoi(str), ft_atoi(str)); }
 
-TEST(atoi, Zero) {
-    vs_real("0");
-}
+TEST(atoi, Empty) { compare(""); }
+
+TEST(atoi, Zero) { compare("0"); }
 
 TEST(atoi, SimplePositive) {
-    vs_real("1");
-    vs_real("42");
-    vs_real("1337");
-    vs_real("1337");
+  compare("1");
+  compare("42");
+  compare("1337");
+  compare("1337");
 }
 
 TEST(atoi, SimpleNegatives) {
-    vs_real("-1");
-    vs_real("-42");
-    vs_real("-1337");
-    vs_real("-1337");
+  compare("-1");
+  compare("-42");
+  compare("-1337");
+  compare("-1337");
 }
 
 TEST(atoi, LeadingZeros) {
-    vs_real("01");
-    vs_real("001");
-    vs_real("0000000009");
-    vs_real("-0000000999");
+  compare("01");
+  compare("001");
+  compare("0000000009");
+  compare("-0000000999");
 }
 
 TEST(atoi, InvalidSigns) {
-    vs_real("--9");
-    vs_real("-+9");
-    vs_real("+-9");
-    vs_real("++9");
+  compare("--9");
+  compare("-+9");
+  compare("+-9");
+  compare("++9");
 }
 
 TEST(atoi, LeadingWhitespaces) {
-    vs_real(" 42");
-    vs_real("                 42");
-    vs_real("  \n    \t   \n   \t-42");
+  compare(" 42");
+  compare("                 42");
+  compare("  \n    \t   \n   \t-42");
 }
 
 TEST(atoi, InvalidCharacters) {
-    vs_real("a42");
-    vs_real("\00142");
-    vs_real("a");
-    vs_real("-a2");
-    vs_real("+a2");
-    vs_real("-a");
-    vs_real("+a");
-    vs_real("asdfghjklqwertyuiopqwertyuiop");
+  compare("a42");
+  compare("\00142");
+  compare("a");
+  compare("-a2");
+  compare("+a2");
+  compare("-a");
+  compare("+a");
+  compare("asdfghjklqwertyuiopqwertyuiop");
 }
 
 TEST(atoi, CharactersInNumber) {
-    vs_real("123a42");
-    vs_real("123 42");
-    vs_real("123-42");
-    vs_real("123+42");
-    vs_real("123this");
-    vs_real("0this123");
-    vs_real("-123+42");
-    vs_real("-123this");
-    vs_real("-0this123");
-    vs_real("-this123+42");
-    vs_real("-this123this");
-    vs_real("-this0this123");
+  compare("123a42");
+  compare("123 42");
+  compare("123-42");
+  compare("123+42");
+  compare("123this");
+  compare("0this123");
+  compare("-123+42");
+  compare("-123this");
+  compare("-0this123");
+  compare("-this123+42");
+  compare("-this123this");
+  compare("-this0this123");
 }
 
 TEST(atoi, IntMax) {
-    vs_real("2147483647");
-    vs_real("2147483647 ");
+  compare("2147483647");
+  compare("2147483647 ");
 }
 
 TEST(atoi, IntMin) {
-    vs_real("-2147483648");
-    vs_real("-2147483648 ");
+  compare("-2147483648");
+  compare("-2147483648 ");
 }
-
