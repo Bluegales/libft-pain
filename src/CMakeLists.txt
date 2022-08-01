@@ -7,9 +7,9 @@ add_library(
 )
 
 add_library(
-    fakeft SHARED
-    fakeft/libft.cc
-    fakeft/libft.h
+  fakeft SHARED
+  fakeft/libft.cc
+  fakeft/libft.h
 )
 
 add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -fno-common -O3)

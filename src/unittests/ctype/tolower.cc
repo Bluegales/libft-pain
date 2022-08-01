@@ -26,7 +26,7 @@ TEST(Tolower, OtherAscii) {
 }
 
 TEST(Tolower, NegativeChar) {
-  for (int i = 0; i >= INT8_MIN; i--) {
+  for (int i = -1; i >= INT8_MIN; i--) {
     EXPECT_EQ(i, ft_tolower(i));
   }
 }

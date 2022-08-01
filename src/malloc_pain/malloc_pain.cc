@@ -1,8 +1,6 @@
 #include <climits>
 #include <unordered_map>
 
-#undef malloc
-#undef free
 #include <cstdlib>
 #include <string>
 #include <sstream>

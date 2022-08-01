@@ -21,7 +21,7 @@ TEST(Isprint, NonPrintableAscii) {
 }
 
 TEST(Isprint, NegativeChar) {
-  for (int i = 0; i >= INT8_MIN; i--) {
+  for (int i = -1; i >= INT8_MIN; i--) {
     EXPECT_FALSE(ft_isprint(i));
   }
 }

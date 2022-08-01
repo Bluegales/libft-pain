@@ -8,6 +8,7 @@ enable_testing()
 set(CMAKE_CXX_STANDARD 17)
 include_directories(.)
 
+
 # =============
 # GTEST
 # =============
@@ -25,6 +26,7 @@ include(GoogleTest)
 # =============
 # LIBFT
 # =============
+
 find_path(
     LIBFT_FOLDER
     NAMES libft
@@ -35,19 +37,27 @@ if(NOT LIBFT_FOLDER)
 endif()
 
 file(GLOB ft_SRC
-     ${LIBFT_FOLDER}/libft/*.c
-     ${LIBFT_FOLDER}/libft/*.h
+    ${LIBFT_FOLDER}/libft/*.c
+    ${LIBFT_FOLDER}/libft/*.h
 )
 add_library(
-    ft STATIC
+    ft SHARED
     ${ft_SRC}
-    src/malloc_pain/malloc_pain.cc
 )
 target_compile_definitions(ft PRIVATE malloc=malloc_pain free=free_pain)
+target_compile_options(ft PRIVATE -fsanitize=address,undefined -fno-omit-frame-pointer -fno-common -O1)
 
 # =============
 # MAKEFILE
 # =============
+
+# TODO potentially check Makefile here
+
+# grep -r '<libft.h>' $LIBFT
+# grep -r '\"stdlib.h\"' $LIBFT
+# grep -r '\"unistd.h\"' $LIBFT
+# grep -r '\"string.h\"' $LIBFT
+# grep -r '\"stdio\"' $LIBFT
 
 # Test the makefile potentially
 # find_file(

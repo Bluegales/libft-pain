@@ -14,6 +14,7 @@ target_link_libraries(
     ctype_test
     ft
     fakeft
+    malloc_pain
     GTest::gtest_main
 )
 

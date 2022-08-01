@@ -1,27 +1,49 @@
 #!/bin/bash
-LIBFT=/Users/pfuchs/Documents/eval/ads
-#LIBFT=
 
-if [ -z "$LIBFT" ]
+install_cmake () {
+  echo "hi"
+  if ! command -v brew &> /dev/null
+  then
+    echo "installing brew..."
+    cd ~ && mkdir ./homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+    echo 'PATH="~/homebrew/bin:$PATH"' >> ~/.bash_profile
+    echo 'PATH="~/homebrew/bin:$PATH"' >> ~/.zshrc
+  fi
+
+  if ! command -v cmake &> /dev/null
+  then
+    echo "installing cmake..."
+    brew install cmake
+  fi
+}
+
+if ! command -v cmake &> /dev/null
 then
-	echo "please set your libft path in pain.sh"
-	exit 0
+  echo "cmake not installed"
+  if [[ $OSTYPE != 'darwin'* ]]; then
+    echo 'please install it manually'
+    exit 0
+  fi
+  read -p "do you want to install it? <y/n>" -r
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    install_cmake
+  else
+    exit 1
+  fi
 fi
 
-(cd $LIBFT && make)
-make -i LIBFT=$LIBFT
-rm -rf _bin
+if ! command -v cmake &> /dev/null
+then
+  ~/homebrew/bin/cmake -B build
+else
+  cmake -B build
+fi
+cd build && make -j8
 
-printf "\033[0;33m"
-echo 'wrongly used "" / <>:'
-printf "\033[1;31m"
-grep -r '<libft.h>' $LIBFT
-grep -r '\"stdlib.h\"' $LIBFT
-grep -r '\"unistd.h\"' $LIBFT
-grep -r '\"string.h\"' $LIBFT
-grep -r '\"stdio\"' $LIBFT
-printf "\033[0;33m"
-echo "files with non static functions:"
-printf "\033[0;31m"
-nm -o $LIBFT/libft.a | grep " T " | cut -d ':' -f 2 | uniq -c | grep -v '^ *1 ' | cat
-printf "\033[0m"
+printf '\033[0;31m'
+echo "==================================================================="
+echo "Check Readme for the Usage: https://github.com/Bluegales/libft-pain"
+echo "and leave a star while you are at it :)"
+echo "==================================================================="
+printf '\033[0m'

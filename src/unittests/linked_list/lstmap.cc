@@ -17,22 +17,22 @@ class Lstmap : public ::testing::Test {
 };
 
 static void empty_del(void *content) {}
-static void del(void *content) { free_pain(content); }
+static void del(void *content) { free(content); }
 
 static void *return_null(void *content) { return nullptr; }
 
 static void *copy(void *content) {
   auto data = reinterpret_cast<Data *>(content);
-  auto new_data = reinterpret_cast<Data *>(malloc_pain(sizeof(Data)));
+  auto new_data = reinterpret_cast<Data *>(malloc(sizeof(Data)));
   new_data->a = data->a;
   new_data->b = data->b;
   return new_data;
 }
 
-// TEST_F(Lstmap, OptionalSize0) {
-//   t_list* list = nullptr;
-//   ft_lstmap(list, copy, empty_del);
-// }
+TEST_F(Lstmap, OptionalSize0) {
+  t_list* list = nullptr;
+  ft_lstmap(list, copy, empty_del);
+}
 
 TEST_F(Lstmap, Size1Copy) {
   auto list = generateTestList(1);

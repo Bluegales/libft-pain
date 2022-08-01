@@ -17,6 +17,7 @@ target_link_libraries(
     linked_list_test
     ft
     fakeft
+    malloc_pain
     GTest::gtest_main
 )
 

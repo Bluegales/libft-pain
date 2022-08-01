@@ -42,7 +42,7 @@ char *ft_strdup(const char *str) { abort(); }
 char *ft_substr(char const *str, unsigned int start, size_t len) { abort(); }
 char *ft_strjoin(char const *str1, char const *str2) { abort(); }
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char)) { abort(); }
-char **ft_strsplit(char const *s, const char *set) { abort(); }
+char **ft_split(char const *s, const char *set) { abort(); }
 char *ft_strtrim(const char *str, const char *set) { abort(); }
 void ft_putchar_fd(char c, int fd) { abort(); }
 void ft_putendl_fd(const char *s, int fd) { abort(); }

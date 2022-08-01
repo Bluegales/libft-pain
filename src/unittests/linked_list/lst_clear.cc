@@ -13,8 +13,9 @@ class LstClear : public ::testing::Test {
     if (is_leaking()) FAIL() << show_leaked_memory();
   }
 };
-
-static void delfunction(void *content) { free_pain(content); }
+extern "C" {
+static void delfunction(void *content) { free(content); }
+}
 
 TEST_F(LstClear, OptionalSize0) { 
   t_list *list = nullptr;
