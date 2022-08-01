@@ -16,7 +16,7 @@ class Lstdelone : public ::testing::Test {
 
 static void delfunction(void *content) { free_pain(content); }
 
-TEST_F(Lstdelone, OptionalSize0) { 
+TEST_F(Lstdelone, OptionalSize0) {
   t_list *list = nullptr;
   ft_lstdelone(list, delfunction);
 }
